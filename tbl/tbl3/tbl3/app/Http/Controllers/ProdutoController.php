@@ -26,11 +26,37 @@ class ProdutoController extends Controller
                 $request->input('preco_maximo')
             );
         }
+        if ($request->filled('preco_minimo')) {
+            $consulta->where(
+                'preco',
+                '>=',
+                $request->input('preco_minimo')
+            );
+        }
+        if ($request->filled('Nome_exato')) {
+            $consulta->where(
+                'nome',
+                '=',
+                $request->input('Nome_exato')
+            );
+        }
         // "1" filtra ativos; "0" filtra inativos; vazio mostra todos.
         if ($request->input('ativo') === '1') {
             $consulta->where('ativo', true);
         } elseif ($request->input('ativo') === '0') {
             $consulta->where('ativo', false);
+        }
+
+        switch ($request->input('order_by')) {
+            case 'Nome':
+                $consulta->orderBy('nome', 'asc');
+                break;
+            case 'Preco':
+                $consulta->orderBy('preco', 'desc');
+                break;
+            default:
+                $consulta->orderBy('id', 'asc');
+                break;
         }
         $produtos = $consulta
             ->orderBy('nome', 'asc')

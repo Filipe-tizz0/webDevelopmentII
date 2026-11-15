@@ -1,0 +1,6 @@
+2 - Não foi necessário utilizar AND explicitamente, o eloquent permite criar querys dinamicas.
+Quando é consulta é interpretada pelo postgres ele usa AND porque as condições de preço devem 
+ser ambras verdadeiras;
+
+3 - A diferença é que gamer% traz nomes que começam com 'gamer', já %gamer% traz resultados que 
+tenham no meio da string o valor 'gamer';

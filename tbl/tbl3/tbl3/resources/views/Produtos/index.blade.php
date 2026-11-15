@@ -70,6 +70,24 @@
                 placeholder="Ex.: 200">
         </div>
         <div>
+            <label for="preco_minimo">Preço mínimo</label>
+            <input type="number" id="preco_minimo" name="preco_minimo"
+                min="0" step="0.01" value="{{ request('preco_minimo') }}"
+                placeholder="Ex.: 200">
+        </div>
+        <div>
+            <label for="prod_id">Id</label>
+            <input type="number" id="prod_id" name="prod_id"
+                min="0" step="0.01" value="{{ request('prod_id') }}"
+                placeholder="Ex.: 15">
+        </div>
+        <div>
+            <label for="Nome_exato">Nome exato</label>
+            <input type="text" id="Nome_exato" name="Nome_exato"
+                min="0" step="0.01" value="{{ request('Nome_exato') }}"
+                placeholder="Ex.: teclado">
+        </div>
+        <div>
             <label for="ativo">Status</label>
             <select id="ativo" name="ativo">
                 <option value="">Todos</option>
@@ -77,6 +95,16 @@
 }}>Ativos</option>
                 <option value="0" {{ request('ativo') === '0' ? 'selected' : ''
 }}>Inativos</option>
+            </select>
+        </div>
+        <div>
+            <label for="order_by">Ordernação</label>
+            <select id="order_by" name="order_by" onchange="this.form.submit()">
+                <option value="">---</option>
+                <option value="Nome" {{ request('order_by') === 'Nome' ? 'selected' : ''
+}}>Nome</option>
+                <option value="Preco" {{ request('order_by') === 'Preco' ? 'selected' : ''
+}}>Preco</option>
             </select>
         </div>
         <button type="submit">Filtrar</button>

@@ -35,7 +35,7 @@ class ProdutoController extends Controller
         $produtos = $consulta
             ->orderBy('nome', 'asc')
             ->get();
-        return view('produtos.index', [
+        return view('Produtos.index', [
             'produtos' => $produtos,
         ]);
     }

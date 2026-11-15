@@ -7,3 +7,11 @@ Route::inertia('/', 'Welcome')->name('home');
 
 Route::get('/produtos', [ProdutoController::class, 'index'])
     ->name('produtos.index');
+
+Route::get(
+    '/ola',
+    function () {
+        return 'ola';
+    }
+)
+    ->name('inicial');
